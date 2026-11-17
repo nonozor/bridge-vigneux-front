@@ -1,0 +1,96 @@
+
+<span *ngIf="isAdmin"><b>Vous êtes administrateur.</b><br>
+    <button class="btn btn-primary" (click)="disconnectAdmin()">Se déconnecter</button><br><br>
+    <button class="btn btn-primary" (click)="gotoEditUsers()">Voir les utilisateurs</button><br>
+</span>
+<br>
+<span *ngIf="noSeanceYet">Il n'y a pas de seance ouverte à ce jour.<br>
+    Voulez-vous en créer une ? <button class="btn btn-primary" (click)="selectTypeSeance()">Créer une séance</button><br>
+</span>
+<span *ngIf="typesSeance">Choisissez le type de la séance :<br>
+     <div class="divType" *ngFor="let typeSeance of typesSeance">
+        <button class="btn btn-primary" (click)="createSeance(typeSeance.id)" >{{typeSeance.label}}</button><br>
+     </div>
+     <br>
+</span>
+
+
+<span *ngIf="isAdmin"><br>Réouvrir la dernière seance créée : 
+    <button class="btn btn-primary" (click)="reOpenSeance()">Voir la séance</button>
+    <br>
+</span>
+<br>
+
+<app-display-user-card [user]="user"></app-display-user-card>
+<button class="btn btn-primary" *ngIf="isAdmin" (click)="addCredit(user)">Créditer</button>
+<br><br>
+<span *ngIf="user!=null && !otherPlayCard">Votre solde est de : <b>{{soldeJetons}} jeton<span *ngIf="user.soldeJetons!>1">s</span></b></span>
+<span *ngIf="user!=null && otherPlayCard">le solde de ce joueur est de : <b>{{soldeJetons}} jeton<span *ngIf="user.soldeJetons!>1">s</span></b></span>
+<br><br>
+
+<table>
+    <tr>
+    <tr>
+        <td>
+            <b>Mvts</b>
+        </td>
+        <td>
+            Date
+        </td>
+        <td>
+            Montant
+        </td>
+        <td>
+            Jetons
+        </td>
+        <td>
+            Solde<br>jetons
+        </td>
+    </tr>
+    <tr *ngFor="let mvt of mouvements">
+        <td>
+            <span *ngIf="mvt.type=='C'">Crédit</span>
+            <span *ngIf="mvt.type=='D'">Débit</span>
+            <span *ngIf="mvt.type==null">Création<br>du compte</span>
+        </td>
+        <td>
+            {{mvt.date}}
+        </td>
+        <td>
+            {{mvt.montant}}
+        </td>
+        <td>
+            {{mvt.nbJetons}}
+        </td>
+        <td>
+            {{mvt.soldeJetons}}
+        </td>
+    </tr>
+</table>
+<div class="popup" *ngIf="displayCreditPopup">
+    <div class="center">Ajouter des crédits à {{user.prenom}} {{user.nom}}</div><br>
+    <table>
+        <tr>
+            <td>Montant :</td>
+            <td><input #montantCredit size="5" (keyup)="keyupMontant($event)"> € </td>
+        </tr>
+        <tr>
+            <td>Nombre de jetons :</td>
+            <td><input #nbJetonsCredit size="5" (keyup)="keyupJetons($event)">  </td>
+        </tr>
+        <tr>
+            <td>Date :</td>
+           <td><input #date2 id="datetimepicker"></td>
+        </tr>
+        <tr>
+            <td>Référence du chèque : </td>
+            <td><input #refCheque></td>
+        </tr>
+    </table>
+    <br>
+    <div class="center">
+        <button class="btn btn-primary" (click)="cancelCreditUser()">Annuler</button>
+        <button class="btn btn-primary" (click)="addCreditValidation(user)">Valider</button>
+    </div>
+    <br>
+</div>

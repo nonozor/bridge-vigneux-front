@@ -1,0 +1,50 @@
+<b>Présents à la séance du jour : </b>
+<br>
+<i>-Veuiller Scanner les QRcodes des autres participants-</i>
+<br><button (click)="disconnectAdmin()">Se déconnecter</button><br><br>
+<!--button (click)="gotoPageUserCards()">Voir les cartes QR</button><br><br-->
+<button (click)="close()">Scanner un nouveau QR code</button><br><br>
+Ajouter le joueur : <select #selectUser [multiple]="true" [(ngModel)]="selectedUsers" >
+    <option *ngFor="let user of allUsers" [ngValue]="user.noFFB">{{user.prenom}} {{user.nom}}</option>
+</select><button (click)="addUsersFromFFB()">Ajouter</button><br><br>
+<input #date id="datetimepicker"> <button (click)="setSessionDate()">Ok</button><br><br>
+<br>
+<div class="userBlock" *ngFor="let user of users">
+    <span>{{user.prenom}}</span>
+    &nbsp;
+    <span>{{user.nom}}</span><br>
+    <span>Adhérent : <span *ngIf="user.adherent">Oui</span><span *ngIf="!user.adherent">Non</span></span><br>
+    <span>Solde jetons : {{user.soldeJetons}}</span><br>
+    <div class="center">
+        <button (click)="cancelAddUser(user)">Annuler</button>
+        <button (click)="addCredit(user)">Créditer</button>
+    </div>
+</div>
+<div class="center"><button (click)="closeSession()" >Fermer la séance d'inscriptions</button></div>
+<div class="popup" *ngIf="displayCreditPopup">
+    <div class="center">Ajouter des crédits à {{usrAddCredit.prenom}} {{usrAddCredit.nom}}</div><br>
+    <table>
+        <tr>
+            <td>Montant :</td>
+            <td><input #montantCredit size="5" (keyup)="keyupMontant($event)"> € </td>
+        </tr>
+        <tr>
+            <td>Nombre de jetons :</td>
+            <td><input #nbJetonsCredit size="5" (keyup)="keyupJetons($event)">  </td>
+        </tr>
+        <tr>
+           <td>Date :</td>
+           <td><input #date2 id="datetimepicker"></td>
+        </tr>
+        <tr>
+            <td>Référence du chèque : </td>
+            <td><input #refCheque></td>
+        </tr>
+    </table>
+    <br>
+    <div class="center">
+        <button (click)="cancelCreditUser()">Annuler</button>
+        <button (click)="addCreditValidation(usrAddCredit)">Valider</button>
+    </div>
+    <br>
+</div>

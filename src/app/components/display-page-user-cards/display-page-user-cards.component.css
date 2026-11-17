@@ -1,0 +1,34 @@
+.tdLeft{
+    padding-right:20px;
+}
+.tdRight{   
+    padding-left:20px;
+}
+.table{
+    margin-left: -8px;
+    margin-top:-8px;
+}
+.cb{
+    position: relative;
+    top:20px;
+    left:10px;
+}
+.divCB{
+    width:0px;
+    height:0px;
+    display: block;
+}
+@media print {
+    .divCB{
+        display: none;
+    }
+    .divBtn{
+        display:none;
+    }
+}
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+
+.margeTop{
+    margin:40px;
+}

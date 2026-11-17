@@ -1,0 +1,43 @@
+table td, table td * {
+    vertical-align: top;
+    
+}
+table  {
+    border: 1px solid;
+    border-radius:6px;
+    width:320px;
+    height:200px;
+    background: url("/assets/img/logo3.jpg");
+    background-size: cover;
+}
+@media print {
+    table {
+        border: solid white !important;
+    }
+}
+
+
+.td2{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right:0px;
+    padding-left:0px;
+}
+.td1{
+    padding-top: 3px;
+    padding-bottom: 20px;
+    padding-left:0px;
+    padding-right:0px;
+}
+.head{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.spn{
+    opacity: 1;
+    background-color: white;
+}
+ul{
+    list-style-type:none;
+}

@@ -1,0 +1,32 @@
+
+           <button class="btn btn-primary" (click)="gotoPageUserCards()">Voir les cartes QR</button>&nbsp;
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>N° FFB</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Adherent</th>
+                    <th>Admin</th>
+                    <th>Solde Jetons</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsers">
+                        <td>
+                            <app-editable *ngIf="user.newLine" app-editable [object]="user" [field]="'noFFB'" [id]="'id'"></app-editable>
+                            <span *ngIf="!user.newLine">{{user.noFFB}}</span>
+                        </td>
+                        <td><app-editable [object]="user" [field]="'nom'" [id]="'id'"></app-editable></td>
+                        <td><app-editable [object]="user" [field]="'prenom'" [id]="'id'"></app-editable></td>
+                        <td><app-editable [object]="user" [field]="'adherent'" [id]="'id'"></app-editable></td>
+                        <td><app-editable [object]="user" [field]="'admin'" [id]="'id'"></app-editable></td>
+                        <td>{{user.soldeJetons}}</td>
+                        <td><img class="img" src="/assets/img/trash.png" (click)="dropLine(user)"></td>
+                        <td><button class="btn btn-primary" (click)="openInfoUser(user)">Plus d'info</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <img class="img add" width="20" src="assets/img/add.png" (click)="addLine()">
+            <button class="btn btn-primary" (click)="save()">Enregistrer les modification</button>
+ 

@@ -1,0 +1,28 @@
+.divType{
+    display: inline-block;
+    margin: 8px;
+}
+
+table, td, th {
+    border: 1px solid black;
+ 
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td{
+    text-align: center;
+}
+
+.popup{
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 6px;
+    
+}

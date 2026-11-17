@@ -1,0 +1,11 @@
+<div class="divBtn"><button (click)="selectAllAction()">Selectionner tout</button><button (click)="unselectAllAction()">Déselectionner tout</button>
+<button (click)="doSelect()">Filtrer</button><button (click)="print()">Imprimer</button></div>
+<div *ngFor="let tableData of tablesData">
+    <table class="table" *ngIf="isAdmin">
+        <tr *ngFor="let row of tableData; let i = index">
+            <td class="tdLeft"><div *ngIf="row.column1.nom" class="divCB"><input class="cb"  [checked]="row.column1.checked" (click)="uncheck(row.column1)" type="checkbox"></div><app-display-user-card [user]="row.column1" [displayadherent]="false"></app-display-user-card></td>
+            <td class="tdRight"><div *ngIf="row.column2.nom" class="divCB"><input class="cb" [checked]="row.column2.checked"  (click)="uncheck(row.column2)"  type="checkbox"></div><app-display-user-card [user]="row.column2" [displayadherent]="false"></app-display-user-card></td>
+        </tr>
+    </table>
+    <div class="margeTop">&nbsp;</div>
+</div>

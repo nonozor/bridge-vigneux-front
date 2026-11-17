@@ -1,0 +1,26 @@
+<table *ngIf="user!=null && user.nom!=null">
+    <tr><td colspan="2" class="head">
+        <span class="spn"><b>Club de Bridge Vigneux-Treillieres</b></span>
+        </td>
+    </tr>
+    <tr>
+        <td class="td1">
+            <app-display-user-qr [user]="user"></app-display-user-qr>
+        </td>
+        <td class="td2">
+            <ul>
+                    <li class="spn"><b>{{user.prenom}} {{user.nom}}</b></li>
+                    <li class="spn" *ngIf="displayadherent"><b>Adhérent : <span *ngIf="user.adherent">Oui</span>
+                                <span *ngIf="!user.adherent">Non</span>
+                        </b>
+                    </li>
+                    <br>
+                    <li class="spn"><b>
+                        N° FFB : {{user.noFFB}}
+                    </b></li>
+            </ul>
+        </td>
+
+    </tr>
+    
+</table>

@@ -1,0 +1,2 @@
+<div *ngIf="!object['edit_'+field+object[id]]" id="{{id}}{{object[id]}}" (click)="update()" >{{object[field]}}</div>
+<div *ngIf="object['edit_'+field+object[id]]"  id="{{id}}{{object[id]}}"><input id='inp_{{field}}{{object[id]}}' [value]="object[field]" (keyup.enter)="validate()" (blur)="validate()"></div>
